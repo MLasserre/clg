@@ -22,9 +22,9 @@ endif()
 
 file(GLOB CLG_SOURCE ${CLG_SOURCE_DIR}/*.cpp)
 file(GLOB CLG_INCLUDE ${CLG_SOURCE_DIR}/*.h)
-add_executable (main ${CLG_SOURCE})
+add_executable (lauritzen_1992_example ${CLG_SOURCE})
 if (${CMAKE_BUILD_TYPE}  STREQUAL "RELEASE") # release : act install release
-  target_link_libraries(main agrum Eigen3::Eigen)
+  target_link_libraries(lauritzen_1992_example agrum Eigen3::Eigen)
 else() # debug : act install debug
-  target_link_libraries(main agrum-dbg)
+  target_link_libraries(lauritzen_1992_example agrum-dbg)
 endif()

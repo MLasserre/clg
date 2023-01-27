@@ -7,6 +7,7 @@ void sum_product_eliminate_continuous_var(
         vector<gum::Potential< CanonicalForm > > &cf_set,
         ContinuousVariable &variable){
 
+    // Looking for potentials containing the variable to eliminate
     vector<gum::Potential< CanonicalForm > > contains_var;
     vector<gum::Potential< CanonicalForm > > not_contains_var;
     for(auto it=cf_set.begin(); it!=cf_set.end(); ++it){
@@ -20,11 +21,13 @@ void sum_product_eliminate_continuous_var(
 
     }
 
+    // Multiplying potentials containing the variable to eliminate
     gum::Potential<CanonicalForm> product;
     for(auto cf : contains_var){
         product *= cf;
     }
 
+    // Eliminating the variable from the product
     if(!contains_var.empty()){
         gum::Instantiation I(product);
         for(int i=0; i != product.domainSize() ; ++i){
@@ -34,16 +37,20 @@ void sum_product_eliminate_continuous_var(
         not_contains_var.push_back(product);
     }
 
+    // Updating (in place) the set of potentials
     cf_set = not_contains_var;
 }
 
 void sum_product_eliminate_discrete_var(
         vector<gum::Potential< CanonicalForm > > &cf_set,
         gum::LabelizedVariable &variable){
+    // TO FINISH: it should be done following the procedure described in 
+    // Propagation of probabilities, Means, and variances in Mixed Graphical
+    // Association Models, Steffen L. Lauritzen (1992)
     
+    // Looking for potentials containing the variable to eliminate
     vector<gum::Potential< CanonicalForm > > contains_var;
     vector<gum::Potential< CanonicalForm > > not_contains_var;
-
     for(auto cf : cf_set){
         if(cf.contains(variable)){
             contains_var.push_back(cf);
@@ -53,11 +60,13 @@ void sum_product_eliminate_discrete_var(
         }
     }
 
+    // Multiplying potentials containing the variable to eliminate
     gum::Potential<CanonicalForm> product;
     for(auto cf : contains_var){
         product *= cf;
     }
 
+    // Eliminating the variable from the product
     if(!contains_var.empty()){
         gum::Potential< CanonicalForm > marginal;
         for(const auto& v : product.variablesSequence()){

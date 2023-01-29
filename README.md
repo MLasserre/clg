@@ -11,14 +11,7 @@ and the method can only be used for continuous only random variables.
 
 This implementation uses the C++ libraries aGrUM (for graphical models) and Eigen
 (for matrix operations) and you need to install them before using it. Once it is
-done, you can compile and test the algorithms by first modifying the 
-lines:
-```
-set(AGRUM_INSTALLATION_DIRECTORY "/home/lasserre/.venv/otagrum")
-set(aGrUM_DIR "${AGRUM_INSTALLATION_DIRECTORY}/home/lasserre/.venv/otagrum/lib/cmake/aGrUM/")
-```
-in the CMakeList.txt file to specify the location of aGrUM on your computer.
-Then, by running this commands in the cpp/src directory:
+done, you can compile and test the algorithms by running this commands
 ```
 mkdir build
 cd build

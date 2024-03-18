@@ -1,6 +1,6 @@
 set(BIN_SOURCES
     lauritzen_1992_example.cpp
-    continuous_only_example.cpp)
+    neapolitan_example_4_1.cpp)
 foreach(bin_source_file ${BIN_SOURCES} )
     # I used a simple string replace, to cut off .cpp.
     string( REPLACE ".cpp" "" bin_name ${bin_source_file} )
